@@ -1,4 +1,4 @@
-import { env } from './config/env/env';
+import { env } from './shared/config/env.js';
 
 export default {
   migrationsTable: 'pgmigrations',
