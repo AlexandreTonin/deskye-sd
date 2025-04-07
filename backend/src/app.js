@@ -1,7 +1,7 @@
 import express from 'express';
 import pinoHttp from 'pino-http';
-import { logger } from './config/logger/logger.js';
-import { userRoutes } from './routes/userRoutes.js';
+import { logger } from './infra/logger/logger';
+import { userRoutes } from './http/routes/userRoutes.js';
 
 const app = express();
 

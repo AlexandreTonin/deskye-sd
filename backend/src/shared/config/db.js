@@ -1,6 +1,6 @@
 import pkg from 'pg';
 import { logger } from '../logger/logger.js';
-import { env } from '../env/env.js';
+import { env } from './env.js';
 const { Pool } = pkg;
 
 const pool = new Pool({
