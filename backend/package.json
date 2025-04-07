@@ -7,7 +7,11 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "migrate": "node-pg-migrate up -c src/migration.config.js",
+    "migrate:down": "node-pg-migrate down -c src/migration.config.js",
+    "migrate:create": "node-pg-migrate create -d migrations -c src/migration.config.js",
+    "migrate:reset": "node-pg-migrate reset -c src/migration.config.js"
   },
   "keywords": [],
   "author": "",
@@ -18,12 +22,14 @@
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
+    "node-pg-migrate": "^7.9.1",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
   },
   "dependencies": {
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
+    "pg": "^8.14.1",
     "pino": "^9.6.0",
     "pino-http": "^10.4.0",
     "pino-pretty": "^13.0.0"

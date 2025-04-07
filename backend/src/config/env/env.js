@@ -10,6 +10,7 @@ function required(key) {
 
 const env = {
   SERVER_PORT: required('SERVER_PORT'),
+  DATABASE_URL: required('DATABASE_URL'),
 };
 
 export { env };
