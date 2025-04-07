@@ -1,4 +1,4 @@
-import "dotenv/config";
+import 'dotenv/config';
 
 function required(key) {
   const value = process.env[key];
@@ -9,7 +9,7 @@ function required(key) {
 }
 
 const env = {
-  SERVER_PORT: required("SERVER_PORT"),
+  SERVER_PORT: required('SERVER_PORT'),
 };
 
 export { env };
