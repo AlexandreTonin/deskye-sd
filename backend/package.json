@@ -9,9 +9,9 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
-    "migrate": "node-pg-migrate up -c src/migration.config.js",
+    "migrate": "node-pg-migrate up -m src/infra/db/migrations -c src/migration.config.js",
     "migrate:down": "node-pg-migrate down -c src/migration.config.js",
-    "migrate:create": "node-pg-migrate create -d migrations -c src/migration.config.js",
+    "migrate:create": "node-pg-migrate create -m src/infra/db/migrations -c src/migration.config.js",
     "migrate:reset": "node-pg-migrate reset -c src/migration.config.js",
     "prepare": "husky"
   },
