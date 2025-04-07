@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:17
+    container_name: deskye_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: database_user
+      POSTGRES_PASSWORD: database_password
+      POSTGRES_DB: deskye
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - deskye_network
+
+volumes:
+  postgres_data:
+
+networks:
+  deskye_network:
+    driver: bridge
