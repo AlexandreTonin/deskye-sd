@@ -7,11 +7,13 @@
     "start": "node src/server.js",
     "dev": "nodemon src/server.js",
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "format": "prettier --write .",
     "migrate": "node-pg-migrate up -c src/migration.config.js",
     "migrate:down": "node-pg-migrate down -c src/migration.config.js",
     "migrate:create": "node-pg-migrate create -d migrations -c src/migration.config.js",
-    "migrate:reset": "node-pg-migrate reset -c src/migration.config.js"
+    "migrate:reset": "node-pg-migrate reset -c src/migration.config.js",
+    "prepare": "husky"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +24,7 @@
     "eslint": "^9.24.0",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.6",
+    "husky": "^9.1.7",
     "node-pg-migrate": "^7.9.1",
     "nodemon": "^3.1.9",
     "prettier": "^3.5.3"
