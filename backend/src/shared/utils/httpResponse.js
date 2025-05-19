@@ -1,11 +1,26 @@
 import { z } from 'zod';
 
-function successResponse(res, data = {}, message, meta = {}, statusCode) {
+function successResponse(res, message, statusCode) {
   return res.status(statusCode).json({
     success: true,
     message,
-    ...data,
-    ...meta,
+  });
+}
+
+function successResponseWithData(res, data, message, statusCode) {
+  return res.status(statusCode).json({
+    success: true,
+    message,
+    data,
+  });
+}
+
+function successResponseWithDataAndMeta(res, data, message, meta, statusCode) {
+  return res.status(statusCode).json({
+    success: true,
+    message,
+    data,
+    meta,
   });
 }
 
@@ -28,4 +43,9 @@ function errorResponse(res, message, errorMessage, statusCode, error) {
   });
 }
 
-export { successResponse, errorResponse };
+export {
+  successResponse,
+  successResponseWithData,
+  successResponseWithDataAndMeta,
+  errorResponse,
+};
