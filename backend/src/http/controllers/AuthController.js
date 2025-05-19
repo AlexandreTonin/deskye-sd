@@ -34,7 +34,6 @@ const AuthController = {
 
       successResponse(res, 'Logged in successfully', 200);
     } catch (error) {
-      console.error(error);
       errorResponse(
         res,
         'Login failed',

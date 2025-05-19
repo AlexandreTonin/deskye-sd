@@ -27,8 +27,6 @@ class AuthService {
       user[0].hashedPassword,
     );
 
-    console.log(passwordMatch);
-
     if (!passwordMatch) {
       throw new UnauthorizedError('Invalid email/password');
     }
