@@ -1,23 +1,30 @@
-function successResponse(
-  res,
-  data,
-  message = 'Success',
-  meta = {},
-  statusCode = 200,
-) {
+import { z } from 'zod';
+
+function successResponse(res, data = {}, message, meta = {}, statusCode) {
   return res.status(statusCode).json({
     success: true,
     message,
-    data,
+    ...data,
     ...meta,
   });
 }
 
-function errorResponse(res, message = 'Error', errors = {}, statusCode = 400) {
+function errorResponse(res, message, errorMessage, statusCode, error) {
+  if (error instanceof z.ZodError) {
+    return res.status(400).json({
+      success: false,
+      message: 'Missing required fields',
+      errors: error.errors.map((e) => ({
+        field: e.path.join('.'),
+        message: e.message,
+      })),
+    });
+  }
+
   return res.status(statusCode).json({
     success: false,
     message,
-    errors,
+    error: errorMessage,
   });
 }
 
