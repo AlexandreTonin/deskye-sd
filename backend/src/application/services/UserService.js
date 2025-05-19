@@ -1,5 +1,6 @@
 import { UserRepository } from '../../domain/repositories/UserRepository.js';
 import { ConflictError } from '../../shared/errors/ConflictError.js';
+import { NotFoundError } from '../../shared/errors/NotFoundError.js';
 import { hashPassword } from '../../shared/utils/hash.js';
 
 class UserService {
@@ -7,9 +8,21 @@ class UserService {
     this.userRepository = new UserRepository();
   }
 
-  async findAll() {}
+  async findAll(limit, offset) {
+    const [users, total] = await this.userRepository.findAll(limit, offset);
 
-  async findOne(id) {}
+    return [users, total];
+  }
+
+  async findOne(id) {
+    const user = await this.userRepository.findOne(id);
+
+    if (user.length == 0) {
+      throw new NotFoundError('User not found');
+    }
+
+    return user;
+  }
 
   async create(userDTO) {
     const emailExists = await this.userRepository.emailExists(userDTO.email);
