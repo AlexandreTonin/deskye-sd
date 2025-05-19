@@ -30,6 +30,7 @@
     "prettier": "^3.5.3"
   },
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "dotenv": "^16.4.7",
     "express": "^5.1.0",
     "pg": "^8.14.1",
