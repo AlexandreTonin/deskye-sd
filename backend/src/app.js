@@ -2,6 +2,7 @@ import express from 'express';
 import pinoHttp from 'pino-http';
 import { logger } from './infra/logger/logger.js';
 import { userRoutes } from './http/routes/userRoutes.js';
+import { teamRoutes } from './http/routes/teamRoutes.js';
 
 const app = express();
 
@@ -14,5 +15,6 @@ app.use(pinoHttp({ logger }));
 
 // routes
 app.use('/users', userRoutes);
+app.use('/teams', teamRoutes);
 
 export { app };

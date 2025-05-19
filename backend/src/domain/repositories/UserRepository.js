@@ -32,7 +32,10 @@ class UserRepository {
 
       const { rows } = await database.query(selectUserByIdQuery, [id]);
       return rows;
-    } catch (error) {}
+    } catch (error) {
+      error.message = `UserRepository.findOne: ${error.message}`;
+      throw error;
+    }
   }
 
   async create(userDTO) {
