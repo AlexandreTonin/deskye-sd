@@ -1,5 +1,5 @@
 import pkg from 'pg';
-import { logger } from '../infra/logger/logger.js';
+import { logger } from '../../infra/logger/logger.js';
 import { env } from './env.js';
 const { Pool } = pkg;
 
@@ -19,4 +19,4 @@ pool.on('error', (err) => {
   process.exit(-1);
 });
 
-export { pool };
+export { pool as database };
