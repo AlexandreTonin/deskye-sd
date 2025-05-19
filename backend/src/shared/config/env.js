@@ -11,6 +11,8 @@ function required(key) {
 const env = {
   SERVER_PORT: required('SERVER_PORT'),
   DATABASE_URL: required('DATABASE_URL'),
+  JWT_ACCESS_TOKEN_SECRET: required('JWT_ACCESS_TOKEN_SECRET'),
+  JWT_REFRESH_TOKEN_SECRET: required('JWT_REFRESH_TOKEN_SECRET'),
 };
 
 export { env };

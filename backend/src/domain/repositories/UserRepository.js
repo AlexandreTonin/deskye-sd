@@ -8,6 +8,7 @@ class UserRepository {
         SELECT ${selectUserDTO.join(', ')}
         FROM users
         WHERE deactivated_at IS NULL
+        ORDER BY created_at DESC
         LIMIT $1 OFFSET $2
       `;
 
@@ -86,6 +87,18 @@ class UserRepository {
     try {
       const selectUserQuery = `
       SELECT ${selectUserDTO.join(', ')} FROM users WHERE email = $1
+    `;
+
+      const { rows } = await database.query(selectUserQuery, [email]);
+
+      return rows;
+    } catch (error) {}
+  }
+
+  async findByEmailWithPassword(email) {
+    try {
+      const selectUserQuery = `
+      SELECT ${selectUserDTO.join(', ')}, hashed_password as "hashedPassword" FROM users WHERE email = $1
     `;
 
       const { rows } = await database.query(selectUserQuery, [email]);
