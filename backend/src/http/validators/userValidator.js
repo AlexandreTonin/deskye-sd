@@ -17,7 +17,7 @@ const createUserSchema = z.object({
       message: 'Password must contain at least one special character.',
     }),
   role: z.enum(['admin', 'agent', 'customer']),
-  teamId: z.number().int(),
+  teamId: z.number().int().optional(),
 });
 
 export { createUserSchema };
