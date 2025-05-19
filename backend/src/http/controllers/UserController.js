@@ -90,7 +90,22 @@ const UserController = {
 
   async update(req, res) {},
 
-  async delete(req, res) {},
+  async delete(req, res) {
+    try {
+      const { id } = idParamSchema.parse(req.params);
+      await userService.delete(id);
+
+      successResponse(res, 'User deleted successfully', 200);
+    } catch (error) {
+      errorResponse(
+        res,
+        'Failed to delete user',
+        error.message,
+        error.statusCode || 500,
+        error,
+      );
+    }
+  },
 };
 
 export { UserController };

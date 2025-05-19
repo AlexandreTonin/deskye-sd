@@ -62,7 +62,22 @@ class UserRepository {
 
   async update(userDTO) {}
 
-  async delete(id) {}
+  async delete(id) {
+    try {
+      const deleteUserQuery = `
+        UPDATE users 
+        SET deactivated_at = CURRENT_TIMESTAMP 
+        WHERE id = $1
+      `;
+
+      const user = await database.query(deleteUserQuery, [id]);
+
+      return user;
+    } catch (error) {
+      error.message = `UserRepository.delete: ${error.message}`;
+      throw error;
+    }
+  }
 
   async findByEmail(email) {
     try {

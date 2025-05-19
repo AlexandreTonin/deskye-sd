@@ -1,6 +1,7 @@
 import { UserRepository } from '../../domain/repositories/UserRepository.js';
 import { ConflictError } from '../../shared/errors/ConflictError.js';
 import { NotFoundError } from '../../shared/errors/NotFoundError.js';
+import { BadRequestError } from '../../shared/errors/BadRequestError.js';
 import { hashPassword } from '../../shared/utils/hash.js';
 
 class UserService {
@@ -46,7 +47,15 @@ class UserService {
 
   async update(userDTO) {}
 
-  async delete(id) {}
+  async delete(id) {
+    const user = await this.userRepository.delete(id);
+
+    if (user.rowCount == 0) {
+      throw new BadRequestError('User not found');
+    }
+
+    return;
+  }
 }
 
 export { UserService };
