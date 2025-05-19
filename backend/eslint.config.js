@@ -16,7 +16,14 @@ export default [
       prettier: eslintPluginPrettier,
     },
     rules: {
-      'prettier/prettier': ['error', { singleQuote: true }],
+      'prettier/prettier': [
+        'error',
+        {
+          singleQuote: true,
+          tabWidth: 2,
+          useTabs: false,
+        },
+      ],
     },
   },
 ];
