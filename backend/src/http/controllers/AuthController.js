@@ -1,9 +1,8 @@
-import { response } from 'express';
 import { LoginDTO } from '../../application/dtos/auth/LoginDTO.js';
 import { AuthService } from '../../application/services/AuthService.js';
 import {
   errorResponse,
-  successResponse,
+  successResponseWithData,
 } from '../../shared/utils/httpResponse.js';
 import { loginSchema } from '../validators/authValidator.js';
 
@@ -18,21 +17,19 @@ const AuthController = {
 
       const { accessToken, refreshToken } = await authService.login(loginDTO);
 
-      res.cookie('deskye_access_token', accessToken, {
-        httpOnly: true,
-        secure: false,
-        sameSite: 'strict',
-        maxAge: 1000 * 60 * 240, // 240 minutes
-      });
-
       res.cookie('deskye_refresh_token', refreshToken, {
         httpOnly: true,
         secure: false,
         sameSite: 'strict',
-        maxAge: 1000 * 60 * 240, // 240 minutes
+        maxAge: 7 * 24 * 60 * 60 * 1000, // 7d
       });
 
-      successResponse(res, 'Logged in successfully', 200);
+      successResponseWithData(
+        res,
+        { accessToken },
+        'Logged in successfully',
+        200,
+      );
     } catch (error) {
       errorResponse(
         res,
