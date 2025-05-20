@@ -44,8 +44,8 @@ function errorResponse(res, message, errorMessage, statusCode, error) {
 }
 
 export {
+  errorResponse,
   successResponse,
   successResponseWithData,
   successResponseWithDataAndMeta,
-  errorResponse,
 };

@@ -1,7 +1,7 @@
 import { UserRepository } from '../../domain/repositories/UserRepository.js';
+import { BadRequestError } from '../../shared/errors/BadRequestError.js';
 import { ConflictError } from '../../shared/errors/ConflictError.js';
 import { NotFoundError } from '../../shared/errors/NotFoundError.js';
-import { BadRequestError } from '../../shared/errors/BadRequestError.js';
 import { hashPassword } from '../../shared/utils/hash.js';
 
 class UserService {

@@ -1,4 +1,5 @@
 import pkg from 'pg';
+
 import { logger } from '../../infra/logger/logger.js';
 import { env } from './env.js';
 const { Pool } = pkg;

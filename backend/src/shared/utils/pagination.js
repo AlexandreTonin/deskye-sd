@@ -35,4 +35,4 @@ function getPaginationMeta(totalItems, currentPage, perPage) {
   return meta;
 }
 
-export { validatePagination, getPaginationMeta };
+export { getPaginationMeta, validatePagination };

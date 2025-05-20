@@ -1,17 +1,17 @@
-import { createUserSchema } from '../validators/userValidator.js';
+import { CreateUserDTO } from '../../application/dtos/user/CreateUserDTO.js';
+import { UserService } from '../../application/services/UserService.js';
 import {
   errorResponse,
   successResponse,
   successResponseWithData,
   successResponseWithDataAndMeta,
 } from '../../shared/utils/httpResponse.js';
-import { CreateUserDTO } from '../../application/dtos/user/CreateUserDTO.js';
-import { UserService } from '../../application/services/UserService.js';
+import { idParamSchema } from '../../shared/utils/isValidNumberReqParam.js';
 import {
   getPaginationMeta,
   validatePagination,
 } from '../../shared/utils/pagination.js';
-import { idParamSchema } from '../../shared/utils/isValidNumberReqParam.js';
+import { createUserSchema } from '../validators/userValidator.js';
 
 const userService = new UserService();
 
