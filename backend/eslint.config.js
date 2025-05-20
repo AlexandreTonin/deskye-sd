@@ -1,4 +1,5 @@
 import eslintPluginPrettier from 'eslint-plugin-prettier';
+import eslintPluginSimpleImportSort from 'eslint-plugin-simple-import-sort';
 
 export default [
   {
@@ -14,6 +15,7 @@ export default [
     },
     plugins: {
       prettier: eslintPluginPrettier,
+      'simple-import-sort': eslintPluginSimpleImportSort,
     },
     rules: {
       'prettier/prettier': [
@@ -24,6 +26,17 @@ export default [
           useTabs: false,
         },
       ],
+      'no-unused-vars': [
+        'warn',
+        {
+          vars: 'all',
+          varsIgnorePattern: '^_',
+          args: 'after-used',
+          argsIgnorePattern: '^_',
+        },
+      ],
+      'simple-import-sort/imports': 'warn',
+      'simple-import-sort/exports': 'warn',
     },
   },
 ];
