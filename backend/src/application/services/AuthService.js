@@ -34,6 +34,7 @@ class AuthService {
     const jwtUserPaylod = {
       id: user[0].id,
       email: user[0].email,
+      role: user[0].role,
     };
 
     const accessToken = generateAccessToken(jwtUserPaylod);
