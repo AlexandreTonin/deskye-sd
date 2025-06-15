@@ -11,11 +11,11 @@ function generateRefreshToken(payload) {
 }
 
 const verifyAccessToken = (token) => {
-  return jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+  return jwt.verify(token, env.JWT_ACCESS_TOKEN_SECRET);
 };
 
 const verifyRefreshToken = (token) => {
-  return jwt.verify(token, process.env.REFRESH_TOKEN_SECRET);
+  return jwt.verify(token, env.JWT_REFRESH_TOKEN_SECRET);
 };
 
 export {
