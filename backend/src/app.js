@@ -1,3 +1,4 @@
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import pinoHttp from 'pino-http';
 
@@ -14,6 +15,7 @@ app.set('trust proxy', true);
 // middlewares
 app.use(express.json());
 app.use(pinoHttp({ logger }));
+app.use(cookieParser());
 
 // routes
 app.use('/users', userRoutes);

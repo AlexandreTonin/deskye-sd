@@ -43,9 +43,17 @@ function errorResponse(res, message, errorMessage, statusCode, error) {
   });
 }
 
+function unauthorizedResponse(res) {
+  return res.status(401).json({
+    success: false,
+    message: 'Unauthorized',
+  });
+}
+
 export {
   errorResponse,
   successResponse,
   successResponseWithData,
   successResponseWithDataAndMeta,
+  unauthorizedResponse,
 };
